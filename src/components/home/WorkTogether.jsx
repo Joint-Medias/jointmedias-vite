@@ -206,6 +206,7 @@ const WorkTogether = () => {
 									id="name"
 									name="name"
 									type="text"
+									autoComplete="name"
 									placeholder="Your name or company"
 								/>
 							</div>
@@ -220,6 +221,7 @@ const WorkTogether = () => {
 									id="email"
 									name="email"
 									type="email"
+									autoComplete="email"
 									placeholder="contact@johndoe.com"
 								/>
 							</div>
