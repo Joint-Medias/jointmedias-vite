@@ -1,0 +1,57 @@
+@use "../abstracts/abstracts" as *;
+
+.callToAction {
+	max-width: 1040px;
+
+	margin-top: clamp-calc(375px, 2732px, 30px, 100px);
+	font-size: clamp-calc(375px, 2732px, 14px, 16px);
+	padding-top: clamp-calc(375px, 2732px, 20px, 40px);
+	padding-bottom: clamp-calc(375px, 2732px, 20px, 40px);
+	padding-left: clamp-calc(375px, 2732px, 20px, 80px);
+	padding-right: clamp-calc(375px, 2732px, 20px, 80px);
+	margin-left: auto;
+	margin-right: auto;
+	background-color: $color__white;
+
+	@include breakpoint($bp__small) {
+		display: flex;
+		gap: clamp-calc(375px, 2732px, 20px, 80px);
+	}
+
+	h3,
+	p {
+		font-family: $font__secondary;
+		color: $color__primary;
+		margin: 0;
+		padding: 0;
+		font-weight: 300;
+		text-align: center;
+		@include breakpoint($bp__small) {
+			text-align: left;
+		}
+	}
+
+	h3 {
+		font-size: 1.5em;
+		line-height: 1.1666666667;
+		margin-bottom: 5px;
+	}
+
+	p {
+		font-size: 1.125em;
+	}
+
+	.callToAction--button {
+		text-align: center;
+
+		@include breakpoint($bp__small) {
+			text-align: right;
+		}
+
+		a {
+			&:hover {
+				background-color: $color__primary--light;
+			}
+		}
+	}
+}

@@ -1,0 +1,198 @@
+@use "../../abstracts/abstracts" as *;
+
+.cursor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 200;
+	contain: layout style size;
+	pointer-events: none;
+	transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1);
+
+	@include breakpoint(max-width $bp__small) {
+		display: none;
+	}
+
+	&.media-blend {
+		z-index: 100;
+		mix-blend-mode: exclusion;
+		.cursor-media {
+			filter: invert(1);
+		}
+	}
+
+	.media-video{
+		z-index: 101;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		height: 100% !important;
+		width: 100% !important;
+		border-radius: 0;
+		background: rgba($color__black, 0.8);
+		transform: translate(0px, 0px) !important;
+		backdrop-filter: blur(10px);
+		position: fixed !important;
+		transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		#inspiring, #creative{
+			display: none;
+		}
+
+		#joint{
+			aspect-ratio: 16/9;
+			width: 100%;
+			max-width: 1000px;
+		}
+
+		.media-video-close {
+			color: $color__primary;
+			background-color: $color__white;
+			width: 30px;
+			height: 30px;
+			border-radius: 15px;
+			text-align: center;
+			line-height: 30px;
+			display: block;
+			position: absolute;
+			right: -15px;
+			top: -15px;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.media-video-wrapper {
+			position: relative;
+		}
+
+	}
+
+	&.cursor-video {
+		transform: translate(0px, 0px) !important;
+		width: 100%;
+		height: 100%;
+		pointer-events: all;
+		transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+	}
+
+	&:before{
+		content: "";
+		position: absolute;
+		top: -30px;
+		left: -30px;
+		display: block;
+		width: 60px;
+		height: 60px;
+		transform: scale(.2);
+		background: $color__black;
+		border-radius: 50%;
+		transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+		opacity: .7;
+	}
+
+	&.link-hover {
+		&::before {
+			background: $color__purple;
+			width: 0px;
+			height: 0px;
+			top: 0px;
+			left: 0px;
+			opacity: .8;
+		}
+	}
+
+	&.slider-card-hover {
+		&:before {
+			background: $color__secondary;
+			width: 140px;
+			height: 140px;
+			top: -70px;
+			left: -70px;
+			opacity: 1;
+			transform: translate(0, 0);
+			animation: morph 6000ms linear infinite alternate, spin 30000ms linear infinite;
+		}
+
+		&:after {
+			content: "Go";
+			transform: translate(0, 0);
+			color: $color__white--dark;
+			position: absolute;
+			top: -25px;
+			left: -25px;
+			font-size: 30px;
+			font-family: $font__secondary;
+			}
+	}
+
+	@keyframes morph {
+		0% {
+			border-radius: 40% 60% 60% 40%/70% 30%;
+		}
+
+		30%{
+			border-radius: 30% 70% 70% 30% / 41% 58% 42% 59%;
+		}
+
+		60%{
+			border-radius: 56% 44% 67% 33% / 71% 67% 33% 29%;
+		}
+
+		100% {
+			border-radius: 40% 60%;
+		}
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.cursor-media {
+		display: block;
+		width: 350px;
+		height: 350px;
+		border-radius: 100%;
+		overflow: hidden;
+		transform: scale(0);
+		margin: -175px 0 0 -175px;
+		position: relative;
+		background-color: $color__black;
+
+		video {
+			height: 350px;
+			left: 50%;
+			transform: translateX(-50%);
+			position: absolute;
+		}
+	}
+
+
+	.cursor-project {
+		display: block;
+		width: 350px;
+		height: 350px;
+		overflow: hidden;
+		transform: scale(0);
+		margin: -180px 0 0 -180px;
+		position: relative;
+	}
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+	}
+
+}

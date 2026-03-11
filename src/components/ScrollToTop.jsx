@@ -1,0 +1,26 @@
+import { useEffect, useRef } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useLenis } from '@studio-freight/react-lenis'
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+  const lenis = useLenis()
+  const isFirstRender = useRef(true)
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true })
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, lenis])
+
+  return null
+}
+
+export default ScrollToTop

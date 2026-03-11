@@ -1,0 +1,42 @@
+{
+  "name": "joint-medias",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Joint Medias portfolio website",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/ && stylelint \"src/**/*.scss\"",
+    "lint:js": "eslint src/",
+    "lint:css": "stylelint \"src/**/*.scss\""
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@react-three/fiber": "^8.15.16",
+    "@studio-freight/hamo": "^0.6.11",
+    "@studio-freight/react-lenis": "^0.0.45",
+    "clsx": "^2.1.0",
+    "gsap": "^3.13.0",
+    "html-react-parser": "^5.1.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-recaptcha-v3": "^1.10.1",
+    "react-helmet-async": "^2.0.4",
+    "react-router-dom": "^6.22.0",
+    "sass": "^1.80.4",
+    "three": "^0.161.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.4.0",
+    "stylelint": "^17.4.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "vite": "^5.1.0"
+  }
+}

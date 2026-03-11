@@ -1,0 +1,46 @@
+@use "../../sass/abstracts/abstracts" as *;
+
+.sliderWrapper {
+	background-color: $color__primary--light;
+	position: relative;
+	z-index: 2;
+	top: -2.3vw;
+	left: -10px;
+	display: flex;
+	overflow-x: hidden;
+	gap: 1vw;
+	width: calc(100% + 20px);
+	transform: rotate(-2.6deg);
+	filter: drop-shadow(2px 4px 35px rgb(0 0 0 / 48%));
+}
+
+.slider {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 1vw;
+	min-width: 100%;
+	animation: slide 50s linear infinite;
+
+	img {
+		display: block;
+		vertical-align: middle;
+		max-height: clamp(3.75rem, 3.2143rem + 2.6786vi, 7.5rem);
+		filter: invert(100);
+		width: auto;
+
+		&:last-of-type {
+			max-height: clamp(1.875rem, 1.6071rem + 1.3393vi, 3.75rem);
+		}
+	}
+}
+
+@keyframes slide {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(calc(-100% - 1vw));
+	}
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Joint Medias",
+  "short_name": "Joint Medias",
+  "start_url": "/",
+  "background_color": "#002033",
+  "theme_color": "#DBE6DE",
+  "display": "browser",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

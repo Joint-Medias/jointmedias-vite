@@ -1,0 +1,21 @@
+@use "sass:color";
+@use "../../abstracts/abstracts" as *;
+@use "headings";
+@use "copy";
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: $color__text-main;
+	font-family: $font__main;
+	font-size: 1rem;
+	line-height: $font__line-height-body;
+}
+
+*::selection {
+	background-color: color.adjust($color__purple, $lightness: 10%);
+	color: $color__white;
+}

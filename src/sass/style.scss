@@ -1,0 +1,147 @@
+@use "sass:color";
+@use "abstracts/abstracts" as *;
+@use "generic/normalize";
+@use "generic/box-sizing";
+@use "base/base";
+@use "components/components";
+@use "utilities/accessibility";
+@use "utilities/alignments";
+@use "utilities/helpers";
+
+/*!
+Website: Joint Medias
+Author: Joint Medias
+Author URI: https://jointmedias.com
+*/
+
+/* Google Captcha
+--------------------------------------------- */
+.grecaptcha-badge {
+	display: none !important;
+}
+
+// SmoothScroll / Lenis
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+
+// Scrollbar
+/* total width */
+body::-webkit-scrollbar {
+	background-color: $color__white;
+	width: 16px;
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+	background-color: $color__primary;
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+	background-color: $color__primary--light;
+	border-radius: 16px;
+	border: 3px solid $color__primary;
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {
+	display: none;
+}
+
+/* Firefox scrollbar */
+body {
+	scrollbar-color: $color__primary--light $color__primary;
+	scrollbar-width: thin;
+}
+
+// MISC
+.site-footer {
+	a {
+		&:hover {
+			color: color.adjust($color__purple, $lightness: 10%);
+		}
+	}
+}
+
+// Cookie Notice
+.cookie-notice {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	width: 100%;
+	max-width: 420px;
+	background-color: $color__black;
+	color: $color__white;
+	padding: 1.25rem 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 10000;
+	gap: 1rem;
+
+	.cookie-notice__buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	p {
+		margin: 0;
+		padding-right: 1rem;
+	}
+
+	a {
+		color: $color__primary--light;
+		text-decoration: underline;
+		margin-left: 0.5rem;
+	}
+
+	button {
+		background-color: $color__primary--light;
+		color: $color__primary;
+		border: none;
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+		transition: background-color 300ms cubic-bezier(0.37, 0, 0.63, 1);
+
+		&:hover {
+			background-color: color.adjust($color__primary--light, $lightness: 10%);
+		}
+	}
+}
+
+// Reduced motion: disable animations for users who prefer it
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	.blob-canvas {
+		display: none;
+	}
+}

@@ -1,0 +1,116 @@
+@use "sass:color";
+@use "../../abstracts/abstracts" as *;
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: none;
+	border-radius: 0;
+	background: transparent;
+}
+
+.button,
+button[type="submit"],
+.menu-container .nav-link {
+	cursor: pointer;
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+	padding: 10px 37px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	white-space: nowrap;
+	z-index: 1;
+
+	font-family: $font__secondary;
+	font-size: clamp-calc(375px, 2732px, 15px, 24px);
+
+	color: $color__white;
+	background-color: $color__primary;
+	transition:
+		background-color 300ms cubic-bezier(0.37, 0, 0.63, 1),
+		color 300ms cubic-bezier(0.37, 0, 0.63, 1);
+	border-radius: 30px;
+
+	&:visited,
+	&:focus {
+		color: $color__white;
+	}
+
+	&:focus-visible {
+		outline: 2px solid $color__primary--light;
+		outline-offset: 3px;
+	}
+
+	&.no-spacing {
+		margin: 0;
+	}
+
+	&.small {
+		padding: 0.625rem 1rem;
+		font-size: 0.875rem;
+		min-height: 44px;
+	}
+
+	&.link {
+		background-color: transparent;
+
+		&:hover {
+			background-color: transparent;
+		}
+	}
+
+	&.primary {
+		color: $color__white;
+		background-color: $color__primary;
+
+		@include breakpoint($bp__small) {
+			&:hover {
+				color: $color__white;
+				background-color: color.adjust($color__primary--light, $lightness: -10%);
+			}
+		}
+	}
+
+	&.blue {
+		color: $color__primary;
+		background-color: $color__primary--light;
+
+		@include breakpoint($bp__small) {
+			&:hover {
+				color: $color__white;
+				background-color: color.adjust($color__primary--light, $lightness: -10%);
+			}
+		}
+	}
+
+	&.red {
+		background-color: $color__secondary;
+
+		@include breakpoint($bp__small) {
+			&:hover {
+				color: $color__white;
+				background-color: $color__primary;
+			}
+		}
+	}
+
+	@include breakpoint($bp__small) {
+		&:hover {
+			color: $color__white;
+			background-color: $color__secondary;
+		}
+	}
+}
+
+button[type="submit"] {
+	background-color: $color__secondary;
+
+	@include breakpoint($bp__small) {
+		&:hover {
+			color: $color__white;
+			background-color: $color__primary;
+		}
+	}
+}

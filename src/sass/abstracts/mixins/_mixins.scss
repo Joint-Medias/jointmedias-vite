@@ -1,0 +1,36 @@
+@use "sass:list";
+
+// Clamp Function
+@function clamp-calc($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
+    $slope: calc(($size-at-max-width - $size-at-min-width) / ($max-width - $min-width));
+    $y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+    $return-value: clamp(#{$size-at-min-width}, #{$y-axis-intersection} + #{$slope} * 100vw, #{$size-at-max-width});
+    @return $return-value;
+}
+
+// Calculate letter spacing to em
+@mixin letter-spacing($sizeValue: 1) {
+    letter-spacing: calc($sizeValue / 1000) * 1em;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Breakpoint mixin (replaces breakpoint-sass)
+@mixin breakpoint($args...) {
+	@if list.length($args) == 1 {
+		// min-width: @include breakpoint($bp__small)
+		@media (min-width: list.nth($args, 1)) {
+			@content;
+		}
+	} @else if list.nth($args, 1) == max-width {
+		// max-width: @include breakpoint(max-width $bp__small)
+		@media (max-width: list.nth($args, 2) - 1) {
+			@content;
+		}
+	}
+}

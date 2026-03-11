@@ -1,0 +1,15 @@
+@use "navigation/navigation";
+@use "pages/homepage";
+@use "pages/work";
+@use "pages/cursor";
+@use "pages/single-pages";
+@use "pages/services";
+@use "pages/error";
+@use "callToAction";
+
+.video-element {
+	video {
+		max-width: 100%;
+		vertical-align: middle;
+	}
+}

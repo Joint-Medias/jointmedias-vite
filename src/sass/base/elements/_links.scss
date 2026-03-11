@@ -1,0 +1,21 @@
+@use "../../abstracts/abstracts" as *;
+
+a {
+	transition: color 200ms cubic-bezier(0.37, 0, 0.63, 1);
+	color: $color__link;
+
+	&:visited {
+		color: $color__link-visited;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__link-hover;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

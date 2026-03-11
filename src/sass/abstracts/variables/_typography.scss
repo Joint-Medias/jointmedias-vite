@@ -1,0 +1,42 @@
+@font-face {
+	font-family: "nohemi-light";
+	src:
+		url("/fonts/nohemi-light-bf6438cc583f70b-webfont.woff2") format("woff2"),
+		url("/fonts/nohemi-light-bf6438cc583f70b-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "nohemi-regular";
+	src:
+		url("/fonts/nohemi-regular-bf6438cc58b98fc-webfont.woff2")
+			format("woff2"),
+		url("/fonts/nohemi-regular-bf6438cc58b98fc-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+// stylelint-disable value-keyword-case
+$font__main:
+	"Inter",
+	-apple-system,
+	BlinkMacSystemFont,
+	"Segoe UI",
+	Roboto,
+	Oxygen-Sans,
+	Ubuntu,
+	Cantarell,
+	"Helvetica Neue",
+	sans-serif /*rtl:prepend:"Droid Arabic Kufi",*/;
+
+$font__secondary--light: "nohemi-light", sans-serif;
+$font__secondary: "nohemi-regular", sans-serif;
+
+// stylelint-enable value-keyword-case
+$font__code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", courier, monospace;
+$font__line-height-body: 1.5;
+$font__line-height-pre: 1.6;

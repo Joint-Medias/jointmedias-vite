@@ -1,0 +1,28 @@
+@use "sass:color";
+
+// Theme Colors
+$color__primary: #002033;
+$color__primary--light: #009EDD;
+$color__secondary: #CC0D29;
+$color__purple: #592C82;
+
+$color__white: #DBE6DE;
+$color__white--dark: #CED1B5;
+$color__black: #000000;
+
+$color__background-body: #fff;
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+
+$color__text-screen: #21759b;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__link: $color__primary--light;
+$color__link-visited: color.adjust($color__primary--light, $lightness: -5%);
+$color__link-hover: $color__primary;
+$color__text-main: $color__primary;
+
+$color__border-input: #ccc;
+$color__border-abbr: #666;

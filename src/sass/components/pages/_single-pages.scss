@@ -1,0 +1,44 @@
+@use "../../abstracts/abstracts" as *;
+
+.services-page {
+	.blob-canvas {
+		display: none;
+	}
+}
+
+.single-page {
+	position: relative;
+	padding: clamp-calc(375px, 2732px, 5px, 40px)
+		clamp-calc(375px, 2732px, 20px, 120px)
+		clamp-calc(375px, 2732px, 20px, 120px);
+
+	color: $color__white;
+
+	.container {
+		position: relative;
+		z-index: 9999;
+	}
+
+	h1,
+	h2,
+	h3,
+	p,
+	ul,
+	ol,
+	li {
+		color: $color__white;
+	}
+
+	ul,
+	ol {
+		font-size: clamp-calc(375px, 2732px, 15px, 25px);
+		// padding-left: 0;
+		margin-left: 0;
+	}
+
+	p {
+		font-family: $font__main;
+		font-size: clamp-calc(375px, 2732px, 15px, 25px);
+		line-height: 1.4736842105;
+	}
+}

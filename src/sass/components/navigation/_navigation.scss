@@ -1,0 +1,91 @@
+@use "../../abstracts/abstracts" as *;
+
+.logo-container {
+	svg {
+		width: clamp-calc(375px, 2732px, 120px, 200px);
+		height: auto;
+	}
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+	.site-main & {
+		margin: 0 0 1.5em;
+	}
+
+	.nav-links {
+		display: flex;
+	}
+
+	.nav-previous {
+		flex: 1 0 50%;
+	}
+
+	.nav-next {
+		text-align: end;
+		flex: 1 0 50%;
+	}
+}
+
+.main-navigation {
+	display: flex;
+	padding: clamp-calc(375px, 2732px, 20px, 60px)
+		clamp-calc(375px, 2732px, 20px, 120px);
+	background-color: transparent;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+
+	.menu-container {
+		margin-left: auto;
+
+		.nav-link {
+			margin-right: clamp-calc(375px, 2732px, 8px, 20px);
+			margin-top: 0;
+			font-size: clamp-calc(375px, 2732px, 12px, 20px);
+			padding: 10px clamp-calc(375px, 2732px, 15px, 30px);
+			min-height: 44px;
+			display: inline-flex;
+			align-items: center;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.site-header {
+	path {
+		fill: $color__primary;
+	}
+
+	&.light {
+		nav {
+			a {
+				color: $color__white;
+			}
+		}
+
+		path {
+			fill: $color__white;
+		}
+
+		.menu-container .nav-link.primary {
+			color: $color__primary;
+			background-color: $color__white;
+
+			@include breakpoint($bp__small) {
+				&:hover {
+					color: $color__primary;
+					background-color: $color__primary--light;
+				}
+			}
+		}
+	}
+}

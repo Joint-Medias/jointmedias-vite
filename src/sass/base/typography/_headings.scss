@@ -1,0 +1,60 @@
+@use "../../abstracts/abstracts" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font__secondary;
+	clear: both;
+	font-weight: 400;
+
+	@supports (text-wrap: balance) {
+		text-wrap: balance;
+	}
+}
+
+h1 {
+	font-family: $font__secondary;
+	font-weight: 400;
+	font-size: clamp-calc(375px, 2732px, 49px, 160px);
+	line-height: 1;
+
+	@include breakpoint($bp__desktop) {
+		font-size: clamp-calc(1366px, 2732px, 95px, 200px);
+	}
+}
+
+h2 {
+	font-family: $font__secondary--light;
+	font-size: clamp-calc(375px, 2732px, 19px, 50px);
+	line-height: 1.4;
+}
+
+h3,
+.h3 {
+	font-size: clamp-calc(375px, 2732px, 24px, 42px);
+	line-height: 1.2;
+}
+
+.small-title {
+	font-family: $font__main;
+	font-size: clamp(10px, 0.8vw, 23px);
+	@include letter-spacing(50);
+	text-transform: uppercase;
+	margin-bottom: 3.8vw;
+	margin-left: 0.6vw;
+	margin-bottom: 0;
+	max-width: 30ch;
+	line-height: 1.2;
+	font-weight: 600;
+
+	z-index: 1;
+	position: relative;
+
+	@include breakpoint($bp__small) {
+		margin-bottom: 1.3vw;
+		max-width: 52ch;
+	}
+}

@@ -1,0 +1,61 @@
+@keyframes bg-animation {
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+	10% {
+		transform: translate(-5%, -11%);
+	}
+	20% {
+		transform: translate(-12%, -6%);
+	}
+	30% {
+		transform: translate(-7%, -23%);
+	}
+	40% {
+		transform: translate(-5%, -27%);
+	}
+	50% {
+		transform: translate(-14%, -11%);
+	}
+	60% {
+		transform: translate(-17%, -1%);
+	}
+	70% {
+		transform: translate(1%, -13%);
+	}
+	80% {
+		transform: translate(-3%, -32%);
+	}
+	90% {
+		transform: translate(-11%, -12%);
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.grain {
+		position: fixed;
+		height: 100vh;
+		width: 100vw;
+		z-index: 800;
+		pointer-events: none;
+
+		mix-blend-mode: soft-light;
+	}
+
+	.grain:before {
+		content: "";
+		display: block;
+		height: 300%;
+		width: 300%;
+
+		opacity: 0.2;
+
+		background-image: url("/images/noise_sm.png");
+		background-size: 128px;
+		background-repeat: repeat;
+
+		transform: translate(-10%, -10%);
+		animation: bg-animation 8s steps(10) infinite;
+	}
+}

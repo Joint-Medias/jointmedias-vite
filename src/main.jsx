@@ -1,0 +1,19 @@
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
+import App from './App'
+import './sass/style.scss'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <GoogleReCaptchaProvider reCaptchaKey="6LesNJkpAAAAAGMq1VtVhvTJvwU0_SVQGqxYzjpB">
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </GoogleReCaptchaProvider>
+    </HelmetProvider>
+  </React.StrictMode>
+)

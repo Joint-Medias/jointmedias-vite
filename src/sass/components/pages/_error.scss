@@ -1,0 +1,30 @@
+@use "../../abstracts/abstracts" as *;
+
+.error-page,
+.privacy-policy {
+	h1 {
+		font-family: $font__secondary;
+		font-weight: 400;
+		font-size: 95px;
+		font-size: clamp-calc(375px, 2732px, 49px, 160px);
+		line-height: 0.8;
+		color: $color__white;
+		margin-top: 30px;
+		margin-bottom: clamp-calc(375px, 2732px, 20px, 40px);
+		position: relative;
+		z-index: 1;
+
+		@include breakpoint($bp__desktop) {
+			font-size: clamp-calc(1366px, 2732px, 95px, 200px);
+		}
+	}
+
+	p {
+		font-family: $font__main;
+		color: $color__white;
+		font-size: clamp-calc(375px, 2732px, 15px, 25px);
+		line-height: 1.4736842105;
+		position: relative;
+		z-index: 1;
+	}
+}
