@@ -585,20 +585,11 @@ body {
         &:focus-within {
             .work-item--bg {
                 opacity: 1;
-                height: 100%;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                transition: all 500ms cubic-bezier(0.37, 0, 0.63, 1);
+                transform: translate(-50%, -50%) scaleY(1);
 
                 @include breakpoint(max-width $bp__small) {
                     opacity: 1;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    transform: translate(0, 0);
+                    transform: none;
                 }
             }
 
@@ -619,19 +610,23 @@ body {
         .work-item--bg {
             background-color: $color__white;
             width: 100%;
-            height: 0%;
+            height: 100%;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scaleY(0);
             position: absolute;
-            transition: all 500ms cubic-bezier(0.37, 0, 0.63, 1);
+            transition:
+                opacity 500ms cubic-bezier(0.37, 0, 0.63, 1),
+                transform 500ms cubic-bezier(0.37, 0, 0.63, 1);
 
             @include breakpoint(max-width $bp__small) {
-                top: 0% !important;
-                height: 100% !important;
-                right: 0 !important;
-                width: 100% !important;
-                opacity: 1 !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                width: 100%;
+                opacity: 1;
+                transform: none;
                 background: linear-gradient(
                     90deg,
                     $color__primary 0%,
@@ -639,8 +634,6 @@ body {
                     rgba($color__primary, 0.7) 100%
                 );
                 z-index: 2;
-                transform: translate(0, 0);
-                left: 0;
             }
         }
 
@@ -1056,7 +1049,7 @@ footer {
                 &-1 {
                     opacity: 0;
                     transform: translateY(10px);
-                    transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+                    transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1), transform 300ms cubic-bezier(0.37, 0, 0.63, 1);
                     position: relative;
                 }
 
@@ -1070,7 +1063,7 @@ footer {
                 &-2 {
                     opacity: 0;
                     transform: translateY(10px);
-                    transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+                    transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1), transform 300ms cubic-bezier(0.37, 0, 0.63, 1);
                 }
             }
         }
@@ -1083,7 +1076,7 @@ footer {
 
                 .time {
                     opacity: 0.8;
-                    transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+                    transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1);
                     transition-delay: 700ms;
                 }
 
@@ -1091,19 +1084,19 @@ footer {
                     &-1 {
                         opacity: 1;
                         transform: translateY(0px);
-                        transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+                        transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1), transform 300ms cubic-bezier(0.37, 0, 0.63, 1);
                         transition-delay: 300ms;
                     }
                     &-to {
                         opacity: 1;
                         transform: translateY(0px);
-                        transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+                        transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1), transform 300ms cubic-bezier(0.37, 0, 0.63, 1);
                         transition-delay: 400ms;
                     }
                     &-2 {
                         opacity: 1;
                         transform: translateY(0px);
-                        transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+                        transition: opacity 300ms cubic-bezier(0.37, 0, 0.63, 1), transform 300ms cubic-bezier(0.37, 0, 0.63, 1);
                         transition-delay: 500ms;
                     }
                 }

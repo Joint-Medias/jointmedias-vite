@@ -14,23 +14,30 @@ const Services = () => {
 	usePageTracking()
 
 	useIsomorphicLayoutEffect(() => {
-		const handleCardMove = e => {
-			const xAxis = (window.innerWidth / 2 - e.clientX) / 320
-			const yAxis = (window.innerHeight / 2 - e.clientY) / 320
+		let rafId = null
 
-			if (container.current) {
-				const images =
-					container.current.querySelectorAll(".with-effect img")
-				for (const img of images) {
-					img.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translate(-60px, -60px)`
+		const handleCardMove = e => {
+			if (rafId) return
+			rafId = requestAnimationFrame(() => {
+				const xAxis = (window.innerWidth / 2 - e.clientX) / 320
+				const yAxis = (window.innerHeight / 2 - e.clientY) / 320
+
+				if (container.current) {
+					const images =
+						container.current.querySelectorAll(".with-effect img")
+					for (const img of images) {
+						img.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translate(-60px, -60px)`
+					}
 				}
-			}
+				rafId = null
+			})
 		}
 
 		window.addEventListener("mousemove", handleCardMove)
 
 		return () => {
 			window.removeEventListener("mousemove", handleCardMove)
+			if (rafId) cancelAnimationFrame(rafId)
 		}
 	}, [])
 
@@ -105,13 +112,13 @@ const Services = () => {
 						<div className="grid-item small-order-2">
 							<div className="project-tiles justify-end">
 								<div className="project-tile with-effect">
-									<img src="/images/services/gd_1.jpg" alt="Graphic design sample — brand identity" />
+									<img src="/images/services/gd_1.jpg" alt="Graphic design sample — brand identity" loading="lazy" />
 								</div>
 								<div className="project-tile with-effect">
-									<img src="/images/services/gd_2.jpg" alt="Graphic design sample — marketing collateral" />
+									<img src="/images/services/gd_2.jpg" alt="Graphic design sample — marketing collateral" loading="lazy" />
 								</div>
 								<div className="project-tile with-effect">
-									<img src="/images/services/gd_3.jpg" alt="Graphic design sample — print design" />
+									<img src="/images/services/gd_3.jpg" alt="Graphic design sample — print design" loading="lazy" />
 								</div>
 							</div>
 						</div>
@@ -143,10 +150,10 @@ const Services = () => {
 						<div className="grid-item">
 							<div className="project-tiles">
 								<div className="project-tile with-effect">
-									<img src="/images/services/wd_1.jpg" alt="Web design sample — responsive website" />
+									<img src="/images/services/wd_1.jpg" alt="Web design sample — responsive website" loading="lazy" />
 								</div>
 								<div className="project-tile with-effect">
-									<img src="/images/services/wd_2.jpg" alt="Web design sample — e-commerce interface" />
+									<img src="/images/services/wd_2.jpg" alt="Web design sample — e-commerce interface" loading="lazy" />
 								</div>
 							</div>
 						</div>
