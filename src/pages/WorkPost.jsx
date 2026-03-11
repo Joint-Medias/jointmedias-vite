@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom"
+import DOMPurify from "dompurify"
 import parse from "html-react-parser"
 import React from "react"
 
@@ -136,7 +137,7 @@ const WorkPost = () => {
 	)
 
 	if (loading) {
-		return <div className="loading"></div>
+		return <div className="loading" role="status" aria-label="Loading project"></div>
 	}
 
 	if (error || !data || data.length === 0) {
@@ -173,7 +174,7 @@ const WorkPost = () => {
 						<h1 itemProp="headline">{project.title.rendered}</h1>
 						<h2
 							dangerouslySetInnerHTML={{
-								__html: project.excerpt?.rendered,
+								__html: DOMPurify.sanitize(project.excerpt?.rendered || ""),
 							}}
 						></h2>
 
@@ -332,7 +333,7 @@ const WorkPost = () => {
 									{generalContent.content && (
 										<ScrollReveal className="work-single--section work-single-content--copy">
 											<div className="work-single-content--copy--inner">
-												{parse(generalContent.content)}
+												{parse(DOMPurify.sanitize(generalContent.content))}
 											</div>
 										</ScrollReveal>
 									)}
@@ -377,7 +378,7 @@ const WorkPost = () => {
 											<div className="work-single-content--case-study--inner">
 												<h2>{caseStudy.title}</h2>
 												<div>
-													{parse(caseStudy.content)}
+													{parse(DOMPurify.sanitize(caseStudy.content))}
 												</div>
 
 												<CallToAction

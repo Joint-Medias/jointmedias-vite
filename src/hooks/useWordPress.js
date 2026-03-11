@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const API_BASE = "https://headless.jointstaging.com/wp-json/wp/v2"
+const API_BASE = import.meta.env.VITE_WP_API_BASE
 const cache = new Map()
 
 const useWordPress = (endpoint) => {

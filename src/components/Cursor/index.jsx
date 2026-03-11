@@ -109,10 +109,12 @@ const Cursor = () => {
 		document.addEventListener("click", handleClick);
 
 		// Cursor position tracking
+		let rafId = null;
+
 		const onFirstMove = () => {
 			cursorConfigs.x.previous = cursorConfigs.x.current = mouse.x;
 			cursorConfigs.y.previous = cursorConfigs.y.current = mouse.y;
-			requestAnimationFrame(render);
+			rafId = requestAnimationFrame(render);
 			window.removeEventListener("mousemove", onFirstMove);
 		};
 
@@ -136,10 +138,11 @@ const Cursor = () => {
 			}
 
 			element.style.transform = `translate(${cursorConfigs.x.previous}px, ${cursorConfigs.y.previous}px)`;
-			requestAnimationFrame(render);
+			rafId = requestAnimationFrame(render);
 		}
 
 		return () => {
+			if (rafId) cancelAnimationFrame(rafId);
 			document.removeEventListener("mouseover", handleMouseOver);
 			document.removeEventListener("mouseout", handleMouseOut);
 			document.removeEventListener("click", handleClick);

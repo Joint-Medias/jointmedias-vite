@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useParams } from "react-router-dom"
+import DOMPurify from "dompurify"
 import useWordPress from "../hooks/useWordPress"
 import usePageTracking from "../hooks/usePageTracking"
 import Seo from "../components/Seo"
@@ -13,7 +14,7 @@ const Page = () => {
 	)
 
 	if (loading) {
-		return <div className="loading"></div>
+		return <div className="loading" role="status" aria-label="Loading page"></div>
 	}
 
 	if (error || !data || data.length === 0) {
@@ -36,7 +37,7 @@ const Page = () => {
 			/>
 
 			<div className="container container--small">
-				<div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+				<div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(page.content.rendered) }} />
 			</div>
 		</>
 	)

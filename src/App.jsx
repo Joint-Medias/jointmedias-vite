@@ -11,7 +11,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 const App = () => {
   return (
     <>
-      <Suspense fallback={<div className="loading"></div>}>
+      <Suspense fallback={<div className="loading" role="status" aria-label="Loading"></div>}>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />

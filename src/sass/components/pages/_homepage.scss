@@ -430,7 +430,7 @@ body {
     margin: 0 10px 0 10px;
     opacity: 0;
     transform: translateY(100px);
-    cursor: none;
+    cursor: pointer;
     overflow: hidden;
 
     @keyframes card-in {
@@ -567,10 +567,7 @@ body {
 
     .work-item-link {
         text-decoration: none;
-
-        &:last-of-type {
-            border-bottom: 1px solid rgba($color__primary--light, 0.3);
-        }
+        display: block;
     }
 
     .work-item {
@@ -579,6 +576,10 @@ body {
         top: 0;
 
         border-top: 1px solid rgba($color__primary--light, 0.3);
+
+        &:last-of-type {
+            border-bottom: 1px solid rgba($color__primary--light, 0.3);
+        }
 
         &:hover,
         &:focus-within {
@@ -1183,7 +1184,6 @@ textarea {
     background-color: $color__primary;
     color: $color__white !important;
     border: 2px solid transparent;
-    outline: none;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 17px;
@@ -1194,7 +1194,8 @@ textarea {
 
     &:focus-visible {
         border-color: $color__primary--light;
-        outline: none;
+        outline: 2px solid $color__primary--light;
+        outline-offset: 2px;
     }
 }
 

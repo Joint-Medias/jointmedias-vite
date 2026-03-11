@@ -30,17 +30,16 @@ const WorkItem = ({ project }) => {
 	const linkTitle = `${titleCategories.join("")} for ${project.title.rendered}`;
 
 	return (
-		<Link
-			to={`/work/${project.slug}/`}
-			itemProp="url"
-			className="work-item-link"
-			title={linkTitle}
+		<li
+			className="work-item"
+			itemScope
+			itemType="http://schema.org/Article"
 		>
-			<li
-				className="work-item"
-				itemScope
-				itemType="http://schema.org/Article"
-				role="article"
+			<Link
+				to={`/work/${project.slug}/`}
+				itemProp="url"
+				className="work-item-link"
+				title={linkTitle}
 			>
 				<div className="work-item--inner" data-image-src={imageSrc}>
 					<div className="work-item--bg"></div>
@@ -82,8 +81,8 @@ const WorkItem = ({ project }) => {
 						</div>
 					</div>
 				</div>
-			</li>
-		</Link>
+			</Link>
+		</li>
 	);
 };
 

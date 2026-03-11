@@ -14,7 +14,7 @@ const Video = ({ ...props }) => {
 
 	return (
 		<div className="video-element" style={styles}>
-			<video autoPlay muted loop playsInline>
+			<video autoPlay muted loop playsInline aria-label="Project showcase video">
 				<source src={videoSrcURL} type="video/mp4" />
 			</video>
 		</div>

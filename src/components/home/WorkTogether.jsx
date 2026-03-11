@@ -14,6 +14,9 @@ const WorkTogether = () => {
 		let index = 0,
 			interval = 1000
 
+		const timeoutIds = []
+		const intervalIds = []
+
 		const rand = (min, max) => {
 			return Math.floor(Math.random() * (max - min + 1)) + min
 		}
@@ -31,14 +34,21 @@ const WorkTogether = () => {
 		}
 
 		for (const star of document.getElementsByClassName("magic-star")) {
-			setTimeout(
+			const tid = setTimeout(
 				() => {
 					animate(star)
 
-					setInterval(() => animate(star), 1000)
+					const iid = setInterval(() => animate(star), 1000)
+					intervalIds.push(iid)
 				},
 				index++ * (interval / 3),
 			)
+			timeoutIds.push(tid)
+		}
+
+		return () => {
+			timeoutIds.forEach(id => clearTimeout(id))
+			intervalIds.forEach(id => clearInterval(id))
 		}
 	}, [])
 
@@ -188,7 +198,7 @@ const WorkTogether = () => {
 						>
 							<div>
 								<label htmlFor="name">
-									Name <span>*</span>
+									Name <span aria-hidden="true">*</span>
 								</label>
 								<input
 									onKeyDown={() => onType()}
@@ -202,7 +212,7 @@ const WorkTogether = () => {
 
 							<div>
 								<label htmlFor="email">
-									Email <span>*</span>
+									Email <span aria-hidden="true">*</span>
 								</label>
 								<input
 									onKeyDown={() => onType()}
@@ -216,7 +226,7 @@ const WorkTogether = () => {
 
 							<div>
 								<label htmlFor="project">
-									Tell us about your project <span>*</span>
+									Tell us about your project <span aria-hidden="true">*</span>
 								</label>
 								<textarea
 									onKeyDown={() => onType()}
