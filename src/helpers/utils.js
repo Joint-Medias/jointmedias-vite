@@ -40,4 +40,12 @@ const getSiblings = (e) => {
 	} catch { /* no siblings found */ }
 };
 
-export { lerp, getMousePos, getSiblings, useIsomorphicLayoutEffect };
+// Decode HTML entities (e.g. &#038; → &, &#8217; → ')
+const decodeEntities = (str) => {
+	if (!str) return "";
+	const el = document.createElement("textarea");
+	el.innerHTML = str;
+	return el.value;
+};
+
+export { lerp, getMousePos, getSiblings, useIsomorphicLayoutEffect, decodeEntities };

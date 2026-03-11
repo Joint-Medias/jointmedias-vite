@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { decodeEntities } from "../../helpers/utils";
 
 const WorkItem = ({ project }) => {
 	let imageSrc =
@@ -44,7 +45,7 @@ const WorkItem = ({ project }) => {
 				<div className="work-item--inner" data-image-src={imageSrc}>
 					<div className="work-item--bg"></div>
 					<div className="work-item--content">
-						<h3 itemProp="headline">{project.title.rendered}</h3>
+						<h3 itemProp="headline">{decodeEntities(project.title.rendered)}</h3>
 						{project.acf?.subtitle ? (
 							<div className="work-item--content--copy">
 								<p>

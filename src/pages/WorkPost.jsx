@@ -3,6 +3,7 @@ import DOMPurify from "dompurify"
 import parse from "html-react-parser"
 import React from "react"
 
+import { decodeEntities } from "../helpers/utils"
 import useWordPress from "../hooks/useWordPress"
 import usePageTracking from "../hooks/usePageTracking"
 import Seo from "../components/Seo"
@@ -171,7 +172,7 @@ const WorkPost = () => {
 			>
 				<header className="work-single-header">
 					<div className="work-single-header--inner">
-						<h1 itemProp="headline">{project.title.rendered}</h1>
+						<h1 itemProp="headline">{decodeEntities(project.title.rendered)}</h1>
 						<h2
 							dangerouslySetInnerHTML={{
 								__html: DOMPurify.sanitize(project.excerpt?.rendered || ""),

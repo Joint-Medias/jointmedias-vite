@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { decodeEntities } from "../../helpers/utils";
 
 const SliderCard = ({ project }) => {
 	let imageSrc =
@@ -38,7 +39,7 @@ const SliderCard = ({ project }) => {
 		>
 			<div className="slider-card--overlay" />
 			<div className="slider-card--content">
-				<h3>{project.title.rendered}</h3>
+				<h3>{decodeEntities(project.title.rendered)}</h3>
 				<p>
 					{project.acf?.subtitle ? project.acf.subtitle : null}
 				</p>
