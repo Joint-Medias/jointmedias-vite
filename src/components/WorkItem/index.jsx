@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { decodeEntities } from "../../helpers/utils";
+import { decodeEntities, proxyCmsUrl } from "../../helpers/utils";
 
 const WorkItem = ({ project }) => {
 	let imageSrc =
-		project._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+		proxyCmsUrl(project._embedded?.["wp:featuredmedia"]?.[0]?.source_url);
 
 	if (!imageSrc) {
 		imageSrc = "/images/homepage/work-list-placeholder.jpg";

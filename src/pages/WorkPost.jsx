@@ -3,7 +3,7 @@ import DOMPurify from "dompurify"
 import parse from "html-react-parser"
 import React from "react"
 
-import { decodeEntities } from "../helpers/utils"
+import { decodeEntities, proxyCmsUrl } from "../helpers/utils"
 import useWordPress from "../hooks/useWordPress"
 import usePageTracking from "../hooks/usePageTracking"
 import Seo from "../components/Seo"
@@ -153,7 +153,7 @@ const WorkPost = () => {
 
 	const project = data[0]
 	const categories = project._embedded?.["wp:term"]?.[0] || []
-	const featuredImage = project._embedded?.["wp:featuredmedia"]?.[0]?.source_url
+	const featuredImage = proxyCmsUrl(project._embedded?.["wp:featuredmedia"]?.[0]?.source_url)
 	const sections = project.acf?.sections || []
 
 	return (
@@ -245,7 +245,7 @@ const WorkPost = () => {
 							/* Fill out data */
 							if (section.image) {
 								image = {
-									data: section.image?.url || section.image?.mediaItemUrl,
+									data: proxyCmsUrl(section.image?.url || section.image?.mediaItemUrl),
 									alt:
 										section.image?.alt ||
 										`${project.title.rendered} image ${index}`,

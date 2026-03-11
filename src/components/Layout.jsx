@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation } from "react-router-dom"
-import React, { lazy, Suspense, useRef } from "react"
+import React, { lazy, Suspense, useRef, useState, useEffect } from "react"
 import { useIsomorphicLayoutEffect } from "../helpers/utils"
 import useMediaQuery from "../hooks/useMediaQuery"
 
@@ -17,6 +17,18 @@ import CookieNotice from "./CookieNotice"
 const Layout = () => {
 	const blobCanvas = useRef()
 	const location = useLocation()
+	const [blobReady, setBlobReady] = useState(false)
+
+	useEffect(() => {
+		const id = typeof requestIdleCallback === "function"
+			? requestIdleCallback(() => setBlobReady(true))
+			: setTimeout(() => setBlobReady(true), 200)
+		return () => {
+			typeof cancelIdleCallback === "function"
+				? cancelIdleCallback(id)
+				: clearTimeout(id)
+		}
+	}, [])
 
 	const matches = useMediaQuery("(min-width: 768px)")
 
@@ -56,9 +68,11 @@ const Layout = () => {
 				</Suspense>
 			)}
 			<div ref={blobCanvas} className="blob-canvas">
-				<Suspense fallback={null}>
-					<BlobCanvas />
-				</Suspense>
+				{blobReady && (
+					<Suspense fallback={null}>
+						<BlobCanvas />
+					</Suspense>
+				)}
 			</div>
 			<SmoothWrapper>
 				<ScrollToTop />

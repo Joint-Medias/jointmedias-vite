@@ -48,4 +48,11 @@ const decodeEntities = (str) => {
 	return el.value;
 };
 
-export { lerp, getMousePos, getSiblings, useIsomorphicLayoutEffect, decodeEntities };
+// Rewrite CMS image URLs to proxy through Vercel for caching
+const CMS_ORIGIN = new URL(import.meta.env.VITE_WP_API_BASE).origin;
+const proxyCmsUrl = (url) => {
+	if (!url || !url.startsWith(CMS_ORIGIN)) return url;
+	return "/cms-media" + url.slice(CMS_ORIGIN.length);
+};
+
+export { lerp, getMousePos, getSiblings, useIsomorphicLayoutEffect, decodeEntities, proxyCmsUrl };
